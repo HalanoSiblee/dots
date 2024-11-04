@@ -4,9 +4,9 @@ set $alt Mod1
 exec foot -s
 # Home row direction keys, like vim
 set $term footclient
-set $menu tofi-run | bash
+set $menu "tofi-run --require-match=false | bash"
 set $syscol #EAEAEA
-set $unfcol #000000
+set $unfcol #2F2F2F
     bindsym $mod+Return exec $term
 
     # Kill focused window
