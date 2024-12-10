@@ -3,7 +3,7 @@
 set $mod Mod4
 set $alt Mod1
 set $syscol #ffffff
-set $unfcol #000000
+set $unfcol #1F1F1F
 
 #set $rosewater #f5e0dc
 font pango:monospace 6
@@ -13,11 +13,12 @@ font pango:monospace 6
 #Keyboard layout
 #exec "setxkbmap -layout us,ara"
 #exec "setxkbmap -option 'grp:alt_shift_toggle'"
-exec_always "setxkbmap -model pc104 -layout us,ara -variant ,, -option grp:alt_shift_toggle"
+exec "setxkbmap -model pc104 -layout us,ara -variant ,, -option grp:alt_shift_toggle"
+exec --no-startup-id "nsst -d"
 ##exec_always --no-startup-id numlockx off
 #Halano Picom Xorg Compositor for window shadow and opacity
 exec --no-startup-id picom
-exec --no-startup-id dunst
+#exec --no-startup-id dunst
 #exec --no-startup-id feh --bg-fill ~/.config/bg/archhero.png
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 10%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 10%-
@@ -33,7 +34,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id nsstc
 #bindsym $mod+Shift+f exec --no-startup-id firefox-developer-edition
 #bindsym $mod+Shift+p exec --no-startup-id "firefox-developer-edition --private-window"
 bindsym $mod+Shift+g exec --no-startup-id "gimp -s"
@@ -152,7 +153,9 @@ bindsym Print exec --no-startup-id maim "/home/halano/screens/$(date '+%d-%H-%M-
 bindsym $mod+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Shift+Print exec --no-startup-id maim -s | xclip -selection clipboard -t image/png
 bindsym $mod+Shift+Print exec --no-startup-id maim -s "/home/halano/screens/strip/$(date '+%d-%H-%M-%s').png"
-bindsym Control+Shift+Escape exec --no-startup-id alacritty btop
+#bindsym Control+Shift+Escape exec --no-startup-id "alacritty --command btop"
+bindsym Control+Shift+Escape exec --no-startup-id "nsstc btop"
+bindsym $mod+Shift+T exec --no-startup-id "nsstc tty-clock -ct -C 7"
 gaps inner 3
 #gaps inner all set 20 #meant to be used as a keybinding command
 #ar {
